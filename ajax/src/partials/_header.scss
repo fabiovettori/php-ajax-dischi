@@ -1,0 +1,26 @@
+header {
+    height: 80px;
+    width: 100%;
+    background-color: $header_color_primary;
+    color: $font_primary_color;
+
+    .left, .right {
+        height: 80px;
+    }
+
+    .left {
+        @include flex (row, flex-start, center);
+    }
+
+    .right {
+        @include flex (row, flex-end, center);
+    }
+
+    svg {
+        width: 180px;
+    }
+
+    select {
+        width: 150px;
+    }
+}

@@ -1,0 +1,40 @@
+main {
+    height: 100%;
+    width: 100%;
+    background-color: $main_color_primary;
+    color: $font_primary_color;
+    padding-top: 50px;
+
+    .card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        // grid-auto-rows: minmax(220px, auto);
+        grid-gap: 50px;
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-radius: 5px;
+            padding: 20px;
+            transition: all .3s ease;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.08);
+                transform: scale(1.05);
+                cursor: pointer;
+            }
+
+            h2 {
+                font-size: 14px;
+                padding-top: 10px;
+            }
+
+            h3 {
+                font-size: 12px;
+            }
+
+            img {
+                width: 100%;
+            };
+        }
+    }
+}
