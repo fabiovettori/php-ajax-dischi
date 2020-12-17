@@ -16866,15 +16866,63 @@ body {
 }
 
 header {
-  height: 100px;
+  height: 80px;
   width: 100%;
   background-color: #000000;
   color: #ffffff;
 }
+header .left, header .right {
+  height: 80px;
+}
+header .left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+header .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+header svg {
+  width: 180px;
+}
+header select {
+  width: 150px;
+}
 
 main {
-  height: calc(100vh - 100px);
+  height: 100%;
   width: 100%;
   background-color: #121212;
   color: #ffffff;
+  padding-top: 50px;
+}
+main .card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 50px;
+}
+main .card-container .card {
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 5px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+main .card-container .card:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+main .card-container .card h2, main .card-container .card .h2 {
+  font-size: 14px;
+  padding-top: 10px;
+}
+main .card-container .card h3, main .card-container .card .h3 {
+  font-size: 12px;
+}
+main .card-container .card img {
+  width: 100%;
 }
