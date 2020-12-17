@@ -22,10 +22,7 @@
                         </svg>
                     </div>
                     <div class="col-lg-6 right">
-                        <select name="generi">
-                            <option value="">
-                                
-                            </option>
+                        <select class="generi">
                         </select>
                     </div>
                 </div>
@@ -48,9 +45,9 @@
 
 <script id="entry-template" type="text/x-handlebars-template">
     <div class="card">
-        <img class="poster" src="" alt="">
-        <h2 class="title"></h2>
-        <h3 class="author"></h3>
-        <h3 class="year"></h3>
+        <img class="poster" src="{{ poster }}" alt="{{ title }}">
+        <h2 class="title">{{ title }}</h2>
+        <h3 class="author">{{ author }}</h3>
+        <h3 class="year">{{ year }}</h3>
     </div>
 </script>
