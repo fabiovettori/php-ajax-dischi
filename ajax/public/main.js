@@ -16106,7 +16106,6 @@ $(document).ready(function () {
 
         ;
       });
-      console.log(genres);
 
       for (var i = 0; i < genres.length; i++) {
         $('.generi').append("<option value=\"".concat(genres[i], "\">").concat(genres[i], "</option>"));
@@ -16150,6 +16149,19 @@ $(document).ready(function () {
     },
     error: function error() {
       console.log('source not found');
+    }
+  });
+  var filter = $('select.generi').change(function () {
+    var genreFilter = $(this).val();
+
+    for (var i = 0; i < $('.card').length; i++) {
+      var element = $('.card').eq(i);
+      var genre = $('.card').eq(i).children('h3.genre').text();
+      element.removeClass('d-none');
+
+      if (genre != genreFilter && genreFilter != 'all') {
+        element.addClass('d-none');
+      }
     }
   });
 });

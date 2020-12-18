@@ -16894,7 +16894,7 @@ header select {
 }
 
 main {
-  height: 100%;
+  min-height: calc(100vh - 80px);
   width: 100%;
   background-color: #121212;
   color: #ffffff;
@@ -16902,7 +16902,7 @@ main {
 }
 main .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   grid-gap: 50px;
 }
 main .card-container .card {

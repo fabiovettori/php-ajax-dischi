@@ -17,8 +17,6 @@ $(document).ready(function(){
                 };
             });
 
-            console.log(genres);
-
             for (var i = 0; i < genres.length; i++) {
                 $('.generi').append(`<option value="${genres[i]}">${genres[i]}</option>`);
             };
@@ -46,6 +44,7 @@ $(document).ready(function(){
             // }
 
             // raggruppo i risultati degli oggetti contenuti nella chiamata per poi stamparli in pagina con handlebars
+
             for (var i = 0; i < response.length; i++) {
                 var context = {
                     poster: response[i].poster,
@@ -61,6 +60,21 @@ $(document).ready(function(){
         },
         error: function(){
             console.log('source not found');
+        }
+    });
+
+    var filter = $('select.generi').change(function(){
+        let genreFilter = $(this).val();
+
+        for (var i = 0; i < $('.card').length; i++) {
+            let element = $('.card').eq(i);
+            let genre = $('.card').eq(i).children('h3.genre').text();
+
+            element.removeClass('d-none');
+
+            if (genre != genreFilter && genreFilter != 'all') {
+                element.addClass('d-none');
+            }
         }
     });
 });

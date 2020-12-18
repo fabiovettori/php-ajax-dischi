@@ -23,6 +23,7 @@
                     </div>
                     <div class="col-lg-6 right">
                         <select class="generi">
+                            <option class="active" value="all">all genres</option>
                         </select>
                     </div>
                 </div>
@@ -48,6 +49,7 @@
         <img class="poster" src="{{ poster }}" alt="{{ title }}">
         <h2 class="title">{{ title }}</h2>
         <h3 class="author">{{ author }}</h3>
-        <h3 class="year">{{ year }}</h3>
+        <h3 class="year">{{ genre }}, {{ year }}</h3>
+        <h3 class="genre">{{ genre }}</h3>
     </div>
 </script>
