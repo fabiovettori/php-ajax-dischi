@@ -16890,7 +16890,7 @@ header svg {
   width: 180px;
 }
 header select {
-  width: 150px;
+  width: 155px;
 }
 
 main {
@@ -16925,4 +16925,8 @@ main .card-container .card h3, main .card-container .card .h3 {
 }
 main .card-container .card img {
   width: 100%;
+}
+main .card-container .card .genre {
+  display: inline-block;
+  padding-right: 5px;
 }

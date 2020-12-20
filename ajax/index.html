@@ -49,7 +49,9 @@
         <img class="poster" src="{{ poster }}" alt="{{ title }}">
         <h2 class="title">{{ title }}</h2>
         <h3 class="author">{{ author }}</h3>
-        <h3 class="year">{{ genre }}, {{ year }}</h3>
-        <h3 class="genre">{{ genre }}</h3>
+        <div class="d-flex">
+            <h3 class="year">{{ year }}</h3>
+            <h3 class="genre" genere="{{genre}}">{{ genre }}</h3>
+        </div>
     </div>
 </script>

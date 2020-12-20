@@ -16094,45 +16094,23 @@ var Handlebars = __webpack_require__(/*! handlebars */ "./node_modules/handlebar
 $(document).ready(function () {
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
-  var genres = [];
   $.ajax({
     url: 'dischi.php',
     method: 'GET',
     success: function success(response) {
-      $.each(response, function (i, item) {
+      // estraggo i generi contenuti nella raccolta
+      var genres = [];
+      response.forEach(function (item, i) {
         if (!genres.includes(item.genre)) {
           genres.push(item.genre);
         }
 
         ;
       });
+      genres.forEach(function (item, i) {
+        $('.generi').append("<option value=\"".concat(item, "\">").concat(item, "</option>"));
+      }); // raggruppo i risultati degli oggetti contenuti nella chiamata per poi stamparli in pagina con handlebars
 
-      for (var i = 0; i < genres.length; i++) {
-        $('.generi').append("<option value=\"".concat(genres[i], "\">").concat(genres[i], "</option>"));
-      }
-
-      ;
-    },
-    error: function error() {
-      console.log('source not found');
-    }
-  });
-  $.ajax({
-    url: 'dischi.php',
-    method: 'GET',
-    success: function success(response) {
-      // estraggo i generi contenuti nella raccolta
-      // var genres = [];
-      // for (var i = 0; i < response.length; i++) {
-      //     if (!genres.includes(response[i].genre)) {
-      //         genres.push(response[i].genre);
-      //     };
-      // };
-      //
-      // for (var i = 0; i < genres.length; i++) {
-      //     $('.generi').append(`<option value="${genres[i]}">${genres[i]}</option>`);
-      // }
-      // raggruppo i risultati degli oggetti contenuti nella chiamata per poi stamparli in pagina con handlebars
       for (var i = 0; i < response.length; i++) {
         var context = {
           poster: response[i].poster,
@@ -16153,17 +16131,35 @@ $(document).ready(function () {
   });
   var filter = $('select.generi').change(function () {
     var genreFilter = $(this).val();
+    $.ajax({
+      url: 'dischi.php',
+      method: 'GET',
+      data: {
+        genre: genreFilter
+      },
+      success: function success(response) {
+        // raggruppo i risultati degli oggetti contenuti nella chiamata per poi stamparli in pagina con handlebars
+        $('.card-container').empty();
 
-    for (var i = 0; i < $('.card').length; i++) {
-      var element = $('.card').eq(i);
-      var genre = $('.card').eq(i).children('h3.genre').text();
-      element.removeClass('d-none');
+        for (var i = 0; i < response.length; i++) {
+          var context = {
+            poster: response[i].poster,
+            title: response[i].title,
+            author: response[i].author,
+            genre: response[i].genre,
+            year: response[i].year
+          };
+          var html = template(context);
+          $('.card-container').append(html);
+        }
 
-      if (genre != genreFilter && genreFilter != 'all') {
-        element.addClass('d-none');
+        ;
+      },
+      error: function error() {
+        console.log('source not found');
       }
-    }
-  });
+    });
+  }); // in jquery .data()
 });
 
 /***/ }),
